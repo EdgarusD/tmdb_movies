@@ -18,30 +18,16 @@ export default function Movie() {
       console.log(data);
     }
     getMovie();
+    console.log(movieSelect.poster_path);
   }, [id]);
 
-  // React.useEffect(() => {
-  //   async function getCategories() {
-  //     const { data } = await api.get(
-  //       "/3/movie/popular?api_key=32dd6f3014c24b7ad202c6421bfa1452"
-  //     );
-  //     setMovies(data.results);
-  //   }
-
-  //   getCategories();
-
-  //   console.log(movies);
-  // }, []);
-
-  // React.useEffect(() => {
-  //   async function compararID() {
-  //     const peli = await movies.find((element) => element.id === movieIF);
-  //     setMovieSelect(peli);
-  //   }
-  //   compararID();
-  //   console.log("ADw");
-  //   console.log(movieSelect);
-  // }, [movieIF, movieSelect, movies]);
-
-  return <div>{movieSelect.id}</div>;
+  return (
+    <M.Box>
+      <M.Box>
+        <M.Image
+          src={`https://image.tmdb.org/t/p/w500/${movieSelect.poster_path}`}
+        />
+      </M.Box>
+    </M.Box>
+  );
 }
