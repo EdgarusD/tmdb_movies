@@ -13,7 +13,7 @@ const styles = () => {
 
 export default function Header() {
   return (
-    <M.Grid justify="space-between" sx={{ margin: "15px 0px" }}>
+    <M.Grid justify="space-between" sx={{ margin: "15px 0px", position: "sticky" }}>
       <M.Grid align="center" sx={{ margin: "0px" }}>
         <Link style={styles()} to="/">
           <M.Title order={1} >
