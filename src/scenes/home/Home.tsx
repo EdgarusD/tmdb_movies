@@ -3,6 +3,7 @@ import * as M from "@mantine/core";
 import Carousel from "./Carousel";
 import api from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../../firebase/firebase";
 
 export default function Home() {
   const [movies, setMovies] = React.useState<any[]>([]);
@@ -15,22 +16,22 @@ export default function Home() {
         "/3/movie/popular?api_key=32dd6f3014c24b7ad202c6421bfa1452"
       );
       setMovies(data.results);
-      console.log("Ads")
     }
+
     getCategories();
   }, []);
 
   const path_base_img = "https://image.tmdb.org/t/p/w500/";
 
   function selecccionPelicula(movie: any) {
-    navigate(`/movie/${movie.id}`)
+    navigate(`/movie/${movie.id}`);
   }
 
   const pelis = movies.map((movie) => (
     <M.Box
       sx={{ padding: "10px 20px", height: "360px", background: "#273746" }}
       onClick={() => selecccionPelicula(movie)}
-      >
+    >
       <M.Box>
         {" "}
         <M.Image
@@ -60,7 +61,7 @@ export default function Home() {
   return (
     <M.Box>
       <Carousel movies={movies} />
-      
+
       <M.SimpleGrid cols={5} spacing="md">
         {pelis}
       </M.SimpleGrid>

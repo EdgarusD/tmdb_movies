@@ -1,6 +1,7 @@
 import React from "react";
 import * as M from "@mantine/core";
 import { Link } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
 
 const styles = () => {
   return {
@@ -10,6 +11,7 @@ const styles = () => {
     fontSize: "24px",
   };
 };
+
 
 export default function Header() {
   return (
@@ -36,8 +38,11 @@ export default function Header() {
           </M.ListItem>
         </M.List>
       </M.Grid>
-      <M.Box>
+      <M.Box sx={{display:"flex"}}>
         <M.Input  placeholder="search" variant='unstyled' sx={{backgroundColor:'#262626', padding:'2px 6px', width:'200px', borderRadius:'2px', color:'white'}}/>
+        <Link style={styles()} to="/login">
+          <FaUserCircle />
+        </Link>
       </M.Box>
     </M.Grid>
   );
