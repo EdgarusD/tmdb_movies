@@ -12,6 +12,12 @@ const styles = () => {
   };
 };
 
+const stylesUserCircle = ()=>{
+  return{
+    
+  }
+}
+
 
 export default function Header() {
   return (
@@ -40,8 +46,8 @@ export default function Header() {
       </M.Grid>
       <M.Box sx={{display:"flex"}}>
         <M.Input  placeholder="search" variant='unstyled' sx={{backgroundColor:'#262626', padding:'2px 6px', width:'200px', borderRadius:'2px', color:'white'}}/>
-        <Link style={styles()} to="/login">
-          <FaUserCircle />
+        <Link style={styles()} to="/user  ">
+          <FaUserCircle style={stylesUserCircle()}/>
         </Link>
       </M.Box>
     </M.Grid>

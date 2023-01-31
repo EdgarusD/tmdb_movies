@@ -3,12 +3,16 @@ import * as M from "@mantine/core";
 import Carousel from "./Carousel";
 import api from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../firebase/firebase";
+import {manageUserAtom,} from "../../components/state-global/UserAtom";
+import { useAtom } from "jotai"
+
 
 export default function Home() {
   const [movies, setMovies] = React.useState<any[]>([]);
 
+  const [userSesion, ] = useAtom(manageUserAtom);
   const navigate = useNavigate();
+
 
   React.useEffect(() => {
     async function getCategories() {
@@ -18,7 +22,10 @@ export default function Home() {
       setMovies(data.results);
     }
 
+    console.log(userSesion);
+
     getCategories();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const path_base_img = "https://image.tmdb.org/t/p/w500/";
@@ -26,7 +33,7 @@ export default function Home() {
   function selecccionPelicula(movie: any) {
     navigate(`/movie/${movie.id}`);
   }
-
+  
   const pelis = movies.map((movie) => (
     <M.Box
       sx={{ padding: "10px 20px", height: "360px", background: "#273746" }}
@@ -61,6 +68,8 @@ export default function Home() {
   return (
     <M.Box>
       <Carousel movies={movies} />
+
+      {userSesion ? <div>{userSesion.email}</div>: <div>no hay usuario</div>}
 
       <M.SimpleGrid cols={5} spacing="md">
         {pelis}

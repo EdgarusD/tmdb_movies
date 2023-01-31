@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./scenes/home/Home";
 import Movies from "./scenes/Movies/Movies";
 import Movie from "./scenes/movie/movie";
-import Login from "./scenes/login/Login";
+import User from "./scenes/user/User";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -20,7 +20,7 @@ root.render(
           <Route index element={<Home />} />
           <Route path="/movies" element={<Movies />} />
           <Route  path="/movie/:id" element={<Movie />}/>
-          <Route path="/login" element={<Login />} />
+          <Route path="/User" element={<User />} />
         </Route>
       </Routes>
     </BrowserRouter>
