@@ -34,8 +34,8 @@ export default function User() {
       console.log(userSesion);
       setUserState(2);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+  }, [setUserState, userSesion]);
 
   // const handleSubmitName = (e: any) => {
   //   e.preventDefault();

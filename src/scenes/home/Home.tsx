@@ -5,6 +5,7 @@ import api from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import {manageUserAtom,} from "../../components/state-global/UserAtom";
 import { useAtom } from "jotai"
+import Test from "../../components/Test";
 
 
 export default function Home() {
@@ -70,6 +71,8 @@ export default function Home() {
       <Carousel movies={movies} />
 
       {userSesion ? <div>{userSesion.email}</div>: <div>no hay usuario</div>}
+
+      <Test />
 
       <M.SimpleGrid cols={5} spacing="md">
         {pelis}

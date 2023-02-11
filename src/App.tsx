@@ -21,6 +21,8 @@ function App() {
       console.log("no hay una secion iniciada");
     }
   });
+
+  console.log("apppp")
   return (
     <M.Box sx={{ width: "94%", margin: "auto" }} className="App">
       <Header />

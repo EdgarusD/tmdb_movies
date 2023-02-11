@@ -14,4 +14,4 @@ const manageTestAtom = atom((get)=> get(testAtom),(get, set, _args) => set(testA
 
 
 
-export  {userAtom, manageUserAtom, userStateAtom, manageUserStateAtom}; 
+export  {userAtom, manageUserAtom, userStateAtom, manageUserStateAtom, testAtom, manageTestAtom}; 
