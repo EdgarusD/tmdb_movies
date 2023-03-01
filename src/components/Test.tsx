@@ -1,12 +1,12 @@
 import React from "react";
 import * as M from "@mantine/core";
+import subidaJson from "../services/apiPelis";
 // import { stateContext } from "./state-global/StateProvider";
 // import { useAtom } from "jotai";
 // import { userAtom, manageTestAtom } from "./state-global/UserAtom";
 
 export default function Test() {
   const data = {
-    idPelicula: 10,
     idUsuario: 10,
   };
 
@@ -23,19 +23,26 @@ export default function Test() {
 
   // return <div>{value}</div>;
 
-  const subida = () => {
-    console.log("fetch")
-    fetch("http://localhost/peliculas/add.php", {
-      method: "POST",
-      body: JSON.stringify(data),
-    })
-      .then((response) => response)
-      .then((data) => {
-        console.log("Enviada");
-      })
-      .catch((error) => {
-        console.error("Error", error, "erro de api");
-      });
-  };
-  return <M.Button onClick={subida}>subir data</M.Button>;
+  // const subida = () => {
+  //   console.log("fetch")
+  //   fetch("http://localhost/peliculas/add.php", {
+  //     method: "POST",
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((response) => response)
+  //     .then((data) => {
+  //       console.log("Enviada");
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error", error);
+  //     });
+  // };
+
+  const alerta = ()=>{
+    console.log("daW")
+  }
+
+  
+
+  return <M.Button onClick={()=>{alerta();}}>subir data</M.Button>;
 }

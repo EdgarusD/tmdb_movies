@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./scenes/home/Home";
-import Movies from "./scenes/Movies/Movies";
 import Movie from "./scenes/movie/movie";
 import User from "./scenes/user/User";
 
@@ -18,7 +17,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
+          {/* <Route path="/tvseries" element={< />} /> */}
           <Route  path="/movie/:id" element={<Movie />}/>
           <Route path="/User" element={<User />} />
         </Route>

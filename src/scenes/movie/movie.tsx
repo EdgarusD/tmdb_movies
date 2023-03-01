@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 import Fondo from "../../components/Fondo";
 import SkeletonFondo from "../../components/skeletons/SkeletonFondo";
 import StateProvider from "../../components/state-global/StateProvider";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
 
 export default function Movie() {
   const [dataMovie, setDataMovie] = React.useState<any>([]);
@@ -33,15 +31,6 @@ export default function Movie() {
     getMovie();
     console.log("useEderv");
   }, [id]);
-
-  console.log("normal");
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user;
-    } else {
-      console.log("no hay una secion iniciada");
-    }
-  });
 
   let loading = dataMovie.genres;
   console.log(loading);

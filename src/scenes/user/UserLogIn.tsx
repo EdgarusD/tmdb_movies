@@ -7,28 +7,30 @@ import {
   manageUserAtom,
   manageUserStateAtom,
 } from "../../components/state-global/UserAtom";
-import { useStyles } from "./EstilosUserLoggin";
+import { useStyles } from "../../styles/styles";
+import subidaJson from "../../services/apiPelis";
 
 export default function UserLogIn() {
-  const { classes } = useStyles();
+  const {classes} = useStyles();
 
   const [correo, setCorreo] = React.useState(" ");
-  const [upDateName, setUpdateName] = React.useState("");
   const [contraseña, setContraseña] = React.useState(" ");
+  const [upDateName, setUpdateName] = React.useState("");
 
   const [, setUserSesion] = useAtom(manageUserAtom);
   const [, setUserState] = useAtom(manageUserStateAtom);
 
-
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log("ADAW");
     createUserWithEmailAndPassword(auth, correo, contraseña).then(
       (userCredential) => {
-        console.log(userCredential);
+        console.log(userCredential, "daWWDAW");
         updateProfile(auth.currentUser!, { displayName: upDateName })
           .then(() => {
-            console.log("nombre actualizao");
+            const obj= {
+              idUsuario: auth.currentUser!.uid
+            }
+            subidaJson(obj, "addUser.php");
             // setcurrentSesion(auth.currentUser); //aquiiiii
             setUserSesion(auth.currentUser);
             setUserState(1);
@@ -43,24 +45,43 @@ export default function UserLogIn() {
       <form onSubmit={handleSubmit}>
         <M.TextInput
           label="Correo"
-          classNames={{root: classes.root, input: classes.input, label: classes.label}}
+          classNames={{
+            root: classes.rootInput,
+            input: classes.input,
+            label: classes.labelInput,
+          }}
           placeholder="Correo"
           onChange={(event) => setCorreo(event.target.value)}
         />
         <M.TextInput
           label="Contraseña"
-          classNames={{root: classes.root, input: classes.input, label: classes.label}}
+          classNames={{
+            root: classes.rootInput,
+            input: classes.input,
+            label: classes.labelInput,
+          }}
           placeholder="contraseña"
           onChange={(event) => setContraseña(event.target.value)}
         />
         <M.TextInput
           label="Nombre de usario"
-          classNames={{root: classes.root, input: classes.input, label: classes.label}}
+          classNames={{
+            root: classes.rootInput,
+            input: classes.input,
+            label: classes.labelInput,
+          }}
           placeholder="Nombre"
           onChange={(event) => setUpdateName(event.target.value)}
         />
         <M.Button type="submit">loggin</M.Button>
       </form>
+      <M.Button
+        onClick={() => {
+          setUserState(2);
+        }}
+      >
+        Iniciar secion
+      </M.Button>
     </M.Box>
   );
 }

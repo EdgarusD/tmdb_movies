@@ -7,6 +7,7 @@ import {
 import { useAtom } from "jotai";
 import UserActive from "./UserActive";
 import UserLogIn from "./UserLogIn";
+import UserSignIn from "./UserSignIn";
 
 export default function User() {
   const [userState, setUserState] = useAtom(manageUserStateAtom);
@@ -34,7 +35,6 @@ export default function User() {
       console.log(userSesion);
       setUserState(2);
     }
-
   }, [setUserState, userSesion]);
 
   // const handleSubmitName = (e: any) => {
@@ -43,19 +43,32 @@ export default function User() {
 
   console.log(userState);
 
-  if (userState === 1) {
+  if (userState === 0) {
+    <M.Box>Cargando</M.Box>;
+  } else if (userState === 1) {
     return <UserActive />;
   }
 
-  return userState === 0 ? (
-    <M.Box>Cargando</M.Box>
+  return userState === 2 ? (
+    <M.Box
+    sx={{
+      display: "flex",
+      height: "400px",
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+    >
+      <UserSignIn />
+    </M.Box>
   ) : (
-    <M.Box sx={{
-      display:"flex",
-      height:"400px",
-      justifyContent:"center",
-      alignItems:"center",
-    }} >
+    <M.Box
+      sx={{
+        display: "flex",
+        height: "400px",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <UserLogIn />
     </M.Box>
   );

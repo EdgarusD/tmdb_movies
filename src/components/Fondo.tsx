@@ -3,6 +3,7 @@ import * as M from "@mantine/core";
 import Yt from "./Yt";
 import { stateContext } from "./state-global/StateProvider";
 import { types } from "./state-global/StateReducer";
+import { useStyles } from "../styles/styles";
 
 export default function Fondo(dataMovies: any) {
   const [show, dispach] = React.useContext(stateContext);
@@ -11,34 +12,7 @@ export default function Fondo(dataMovies: any) {
   const movieTrailer = dataMovies.dataMovieTrailer;
   const genre = movieSelect.genres;
 
-  // function mostrar() {
-  //   showYT ? setShowYT(false) : setShowYT(true);
-  // }
-
-  // function ocultar() {
-  //   showYT ? setShowYT(false) : setShowYT(true);
-
-  //   const el = document.getElementById("yotube-video");
-  //   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  //   el?.onclose;
-  // }
-
-  const useStyles = M.createStyles((theme) => ({
-    root: {
-      position: "absolute",
-      width: "100%",
-    },
-    imageWrapper: {
-      overflow: "hidden",
-      position: "relative",
-      // bottom: "100px",
-    },
-    image: {
-      bagroundColor: "rgba(0, 0, 0, 0.5)",
-    },
-  }));
-
-  const { classes } = useStyles();
+  const {classes} = useStyles();
 
   // let generos = <M.Text>Loading...</M.Text>
 
@@ -59,7 +33,7 @@ export default function Fondo(dataMovies: any) {
     >
       <M.Image
         classNames={{
-          root: classes.root,
+          root: classes.rootImage,
           imageWrapper: classes.imageWrapper,
           image: classes.image,
         }}
@@ -122,9 +96,8 @@ export default function Fondo(dataMovies: any) {
           {movieSelect.tagline}{" "}
         </M.Text>
         <M.Button
-          variant="outline"
+          classNames={{root:classes.rootButoonYt}}
           onClick={() => dispach({ type: types.cambio })}
-          sx={{ width: "100px", marginTop: "35px" }}
         >
           Ver trailer
         </M.Button>

@@ -12,22 +12,23 @@ import { onAuthStateChanged } from "firebase/auth";
 function App() {
   const [, setUserSesion] = useAtom(manageUserAtom);
 
-  
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      setUserSesion(user)
-      console.log(user); 
+      setUserSesion(user);
+      console.log(user);
     } else {
       console.log("no hay una secion iniciada");
     }
   });
 
-  console.log("apppp")
+  console.log("apppp");
   return (
-    <M.Box sx={{ width: "94%", margin: "auto" }} className="App">
-      <Header />
-      <Outlet />
-    </M.Box>
+    <M.MantineProvider>
+      <M.Box sx={{ width: "94%", margin: "auto" }} className="App">
+        <Header />
+        <Outlet />
+      </M.Box>
+    </M.MantineProvider>
   );
 }
 
