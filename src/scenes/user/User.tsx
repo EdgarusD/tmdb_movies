@@ -41,8 +41,6 @@ export default function User() {
   //   e.preventDefault();
   // };
 
-  console.log(userState);
-
   if (userState === 0) {
     <M.Box>Cargando</M.Box>;
   } else if (userState === 1) {

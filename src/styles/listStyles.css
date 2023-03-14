@@ -1,0 +1,29 @@
+.List{
+    color: #fff;
+    border: solid #fff 1px;
+    width: 16rem;
+}
+
+.List-item{
+    list-style: none;
+    text-align: start;
+    margin-bottom: 0.5rem;
+    height: 24px;
+    
+}
+
+.List-item-wrapper {
+    width: 100%;
+
+}
+
+.List-item-wrapper > span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+}
+
+.Close {
+    height: 1rem;
+}

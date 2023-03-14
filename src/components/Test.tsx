@@ -1,6 +1,7 @@
 import React from "react";
 import * as M from "@mantine/core";
 import subidaJson from "../services/apiPelis";
+import { showNotification } from "@mantine/notifications";
 // import { stateContext } from "./state-global/StateProvider";
 // import { useAtom } from "jotai";
 // import { userAtom, manageTestAtom } from "./state-global/UserAtom";
@@ -39,7 +40,10 @@ export default function Test() {
   // };
 
   const alerta = ()=>{
-    console.log("daW")
+    showNotification({
+      title: 'Default notification',
+      message: 'Hey there, your code is awesome! 🤥',
+    })
   }
 
   

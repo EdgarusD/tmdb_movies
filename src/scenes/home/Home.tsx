@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import * as M from "@mantine/core";
 import Carousel from "./Carousel";
 import api from "../../services/api";
@@ -8,6 +8,7 @@ import { useAtom } from "jotai";
 import Test from "../../components/Test";
 import { FaHeart } from "react-icons/fa";
 import subidaJson from "../../services/apiPelis";
+import { showNotification } from "@mantine/notifications";
 
 export default function Home() {
   const [movies, setMovies] = React.useState<any[]>([]);
@@ -33,15 +34,24 @@ export default function Home() {
     navigate(`/movie/${movie.id}`);
   }
 
-  function añadirFavorito(idMovie: string) {
+  function añadirFavorito(idMovie: string, movieName: string) {
     if (userSesion) {
       const obj = {
         idPelicula: idMovie,
+        nombrePelicula: movieName,
         idUsuario: userSesion.uid
       };
-      subidaJson(obj, "addFavorita.php")
+      subidaJson(obj, "addFavorita.php");
     } else {
-      console.log("no hay usuaio")
+      showNotification({
+        title: "Sin sesion",
+        message:"Inicia sesion para continuar",
+        styles: ()=>({
+          root: {
+            '&::before': { backgroundColor: '#fffb00' },
+          }
+        })
+      })
     }
   }
 
@@ -60,7 +70,7 @@ export default function Home() {
           top: "4px",
           left: "4px",
         }}
-        onClick={() => añadirFavorito(movie.id)}
+        onClick={() => añadirFavorito(movie.id, movie.title)}
       >
         <FaHeart style={{ color: "red" }} />
       </M.Box>
@@ -99,11 +109,6 @@ export default function Home() {
   return (
     <M.Box>
       <Carousel movies={movies} />
-
-      {userSesion ? <div>{userSesion.email}</div> : <div>no hay usuario</div>}
-
-      <Test />
-
       <M.SimpleGrid cols={5} spacing="md">
         {pelis}
       </M.SimpleGrid>

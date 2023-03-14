@@ -12,6 +12,9 @@ const manageUserStateAtom = atom((get)=> get(userStateAtom),(_get, set, state) =
 const testAtom = atom(4);
 const manageTestAtom = atom((get)=> get(testAtom),(get, set, _args) => set(testAtom, get(testAtom)+2))
 
+const stateControlAtom = atom(0);
+const manageStateControlAtom = atom ((get)=> get(stateControlAtom), (get, set, _args)=>set(stateControlAtom, get(stateControlAtom)+1));
 
 
-export  {userAtom, manageUserAtom, userStateAtom, manageUserStateAtom, testAtom, manageTestAtom}; 
+
+export  {userAtom, manageUserAtom, userStateAtom, manageUserStateAtom, testAtom, manageTestAtom, manageStateControlAtom}; 

@@ -4,10 +4,11 @@ import { Outlet } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 
-import { userAtom, manageUserAtom } from "./components/state-global/UserAtom";
+import { manageUserAtom } from "./components/state-global/UserAtom";
 import { useAtom } from "jotai";
 import { auth } from "./firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import { NotificationsProvider } from "@mantine/notifications";
 
 function App() {
   const [, setUserSesion] = useAtom(manageUserAtom);
@@ -21,13 +22,14 @@ function App() {
     }
   });
 
-  console.log("apppp");
   return (
     <M.MantineProvider>
-      <M.Box sx={{ width: "94%", margin: "auto" }} className="App">
-        <Header />
-        <Outlet />
-      </M.Box>
+      <NotificationsProvider>
+        <M.Box sx={{ width: "94%", margin: "auto" }} className="App">
+          <Header />
+          <Outlet />
+        </M.Box>
+      </NotificationsProvider>
     </M.MantineProvider>
   );
 }

@@ -32,16 +32,16 @@ export default function Header() {
           listStyleType="none"
           sx={{ marginLeft: "48px", display: "flex" }}
         >
-          <M.ListItem>
+          <M.List.Item>
             <Link style={styles()} to="/movies">
               movies
             </Link>
-          </M.ListItem>
-          <M.ListItem>
+          </M.List.Item>
+          <M.List.Item>
             <Link style={styles()} to="/series">
               tv series
             </Link>
-          </M.ListItem>
+          </M.List.Item>
         </M.List>
       </M.Grid>
       <M.Box sx={{display:"flex"}}>
