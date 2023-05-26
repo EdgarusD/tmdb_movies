@@ -4,7 +4,6 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase/firebase';
 import { useAtom } from 'jotai';
 import { manageUserStateAtom, manageUserAtom } from '../../components/state-global/UserAtom';
-import UserActiveFav from './UserActiveFav';
 
 export default function UserActive(currentSesion: any) {
 
@@ -37,7 +36,6 @@ export default function UserActive(currentSesion: any) {
         </M.Button>
         
         <M.Flex justify={'center'}>
-          <UserActiveFav />
         </M.Flex>
       </M.Box>
   )

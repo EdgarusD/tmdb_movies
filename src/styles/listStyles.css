@@ -1,5 +1,5 @@
 .List{
-    color: #fff;
+    color: #ffffff;
     border: solid #fff 1px;
     width: 16rem;
 }
@@ -8,13 +8,11 @@
     list-style: none;
     text-align: start;
     margin-bottom: 0.5rem;
-    height: 24px;
-    
+    height: 24px;  
 }
 
 .List-item-wrapper {
     width: 100%;
-
 }
 
 .List-item-wrapper > span {

@@ -7,6 +7,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./scenes/home/Home";
 import Movie from "./scenes/movie/movie";
 import User from "./scenes/user/User";
+import TvSeries from "./scenes/tvSeries/TvSeries";
+import Serie from "./scenes/tvSeries/Serie";
+import Favoritos from "./scenes/favoritos/Favoritos";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -19,7 +22,10 @@ root.render(
           <Route index element={<Home />} />
           {/* <Route path="/tvseries" element={< />} /> */}
           <Route  path="/movie/:id" element={<Movie />}/>
+          <Route  path="/tv/:id" element={<Serie />}/>
           <Route path="/User" element={<User />} />
+          <Route path="/tvseries" element={<TvSeries />} />
+          <Route path="/favoritos" element={<Favoritos />} />
         </Route>
       </Routes>
     </BrowserRouter>

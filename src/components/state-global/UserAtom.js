@@ -15,6 +15,8 @@ const manageTestAtom = atom((get)=> get(testAtom),(get, set, _args) => set(testA
 const stateControlAtom = atom(0);
 const manageStateControlAtom = atom ((get)=> get(stateControlAtom), (get, set, _args)=>set(stateControlAtom, get(stateControlAtom)+1));
 
+const searchStateAtom = atom(false);
+const manageSearchStateAtom = atom ((get)=> get(searchStateAtom), (_get, set, state)=>set(searchStateAtom, state));
 
 
-export  {userAtom, manageUserAtom, userStateAtom, manageUserStateAtom, testAtom, manageTestAtom, manageStateControlAtom}; 
+export  {userAtom, manageUserAtom, userStateAtom, manageUserStateAtom, testAtom, manageTestAtom, manageStateControlAtom, manageSearchStateAtom}; 

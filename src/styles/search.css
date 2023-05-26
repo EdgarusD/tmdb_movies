@@ -1,0 +1,25 @@
+.common-display{
+    padding: 10px 20px;
+    height: 400px;
+    background: #273746;
+    z-index: 2;
+}
+
+.search-display{
+    padding: 10px 20px;
+    height: 290px;
+    background: #273746;
+    z-index: 2;
+}
+
+.close-search{
+    position: absolute;
+    z-index: 20;
+    right: -40px;
+    top: -30px;
+}
+
+.item-close-search{
+    color: rgb(165, 165, 165);
+    font-size: 20px;
+}

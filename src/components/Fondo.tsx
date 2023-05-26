@@ -4,21 +4,22 @@ import Yt from "./Yt";
 import { stateContext } from "./state-global/StateProvider";
 import { types } from "./state-global/StateReducer";
 import { useStyles } from "../styles/styles";
+import { showNotification } from "@mantine/notifications";
 
-export default function Fondo(dataMovies: any) {
+export default function Fondo(dataMovies: any, dataruta: string) {
   const [show, dispach] = React.useContext(stateContext);
 
   const movieSelect = dataMovies.dataMovie;
   const movieTrailer = dataMovies.dataMovieTrailer;
   const genre = movieSelect.genres;
 
-  const {classes} = useStyles();
+  const { classes } = useStyles();
 
   // let generos = <M.Text>Loading...</M.Text>
 
   // if (genre !== undefined) {
-  const generos = genre.map(( genre: any) => (
-    <M.Text  >{genre.name}&nbsp;&nbsp;&nbsp;</M.Text>
+  const generos = genre.map((genre: any) => (
+    <M.Text key={genre.id}>{genre.name}&nbsp;&nbsp;&nbsp;</M.Text>
   ));
   // }
 
@@ -67,7 +68,11 @@ export default function Fondo(dataMovies: any) {
       ></M.Box>
       {/* <mostrarContext.Provider value={showYT}> */}
 
-      {show ? <Yt movieTrailer={movieTrailer} /> : <M.Title sx={{display:"none"}}></M.Title>}
+      {show ? (
+        <Yt movieTrailer={movieTrailer} />
+      ) : (
+        <M.Title sx={{ display: "none" }}></M.Title>
+      )}
 
       {/* </mostrarContext.Provider> */}
       <M.Box
@@ -77,15 +82,20 @@ export default function Fondo(dataMovies: any) {
           zIndex: 5,
           position: "absolute",
           left: "35%",
+          width: "65%",
         }}
       >
         <M.Text align="left" sx={{ marginTop: "35px" }}>
-          {movieSelect.original_title}
+          {movieSelect.original_title
+            ? movieSelect.original_title
+            : movieSelect.original_name}
         </M.Text>
         <M.Grid>
           <M.Col span={2}>
             <M.Text align="left" sx={{ marginTop: "5px" }}>
-              {movieSelect.release_date}
+              {movieSelect.release_date
+                ? movieSelect.release_date
+                : movieSelect.first_air_date}
             </M.Text>
           </M.Col>
           <M.Col span={5}>
@@ -95,12 +105,29 @@ export default function Fondo(dataMovies: any) {
         <M.Text align="left" sx={{ marginTop: "35px" }}>
           {movieSelect.tagline}{" "}
         </M.Text>
-        <M.Button
-          classNames={{root:classes.rootButoonYt}}
-          onClick={() => dispach({ type: types.cambio })}
-        >
-          Ver trailer
-        </M.Button>
+        {movieTrailer ? (
+          <M.Button
+            classNames={{ root: classes.rootButoonYt }}
+            onClick={() => dispach({ type: types.cambio })}
+          >
+            Ver trailer
+          </M.Button>
+        ) : (
+          <M.Button
+            classNames={{ root: classes.rootButoonYt }}
+            onClick={() => showNotification({
+              title: '>_< sin trailer',
+              message: 'no hay un trailer disponibe',
+              styles: ()=>({
+                root: {
+                  '&::before': { backgroundColor:'#000' },
+                }
+              })
+            })}
+          >
+            Ver trailer
+          </M.Button>
+        )}
         <M.Text align="left" sx={{ marginTop: "35px" }}>
           {movieSelect.overview}
         </M.Text>

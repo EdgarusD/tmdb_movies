@@ -1,0 +1,16 @@
+.input-mantine{
+    color: #b5b5b5;
+}
+
+.search-results{
+    justify-content: center;
+    position: absolute;
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.479);
+    z-index: 20;
+}
+
+.search-waiting{
+    display: none;
+}
+

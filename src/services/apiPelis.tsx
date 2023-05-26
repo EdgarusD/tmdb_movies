@@ -6,7 +6,6 @@ export default function subidaJson(obj: object, url:string) {
 
 
   const subida = (objet:object) => {
-    console.log("fetch")
     fetch(`http://localhost/peliculas/${url}`, {
       method: "POST",
       body: JSON.stringify(objet),
@@ -25,6 +24,7 @@ export default function subidaJson(obj: object, url:string) {
         })
       })
       .catch((error) => {
+        console.log(error);
         showNotification({
           title: "error",
           message: "A ocurrido un error inesperado",
