@@ -21,7 +21,7 @@ export default function TvSeries() {
   return (
     <M.Box>
       <M.Box>
-        {series ? <DisplayDataMovie data={series} src={'tv'}/> : <div>cargando</div>}
+        {series ? <DisplayDataMovie data={series} src={'tv'} tv={true}/> : <div>cargando</div>}
       </M.Box>
     </M.Box>
   );

@@ -8,7 +8,7 @@ import { showNotification } from "@mantine/notifications";
 import { useNavigate } from "react-router-dom";
 import "../styles/search.css"
 
-export default function DisplayDataMovie({ data, src, searchBool }: any) {
+export default function DisplayDataMovie({ data, src, searchBool, tv }: any) {
   const [userSesion] = useAtom(manageUserAtom);
   const [, setStateSearch] = useAtom(manageSearchStateAtom);
 
@@ -17,14 +17,15 @@ export default function DisplayDataMovie({ data, src, searchBool }: any) {
 
   const path_base_img = "https://image.tmdb.org/t/p/w500/";
 
-  function añadirFavorito(idMovie: string, movieName: string) {
+  function añadirFavorito(idMovie: string, movieName: string, tv: boolean) {
     if (userSesion) {
       const obj = {
         idPelicula: idMovie,
         nombrePelicula: movieName,
         idUsuario: userSesion.uid,
       };
-      subidaJson(obj, "addFavorita.php");
+      tv ? subidaJson(obj, `addFavoritaTv.php`):
+      subidaJson(obj, `addFavorita.php`);
     } else {
       showNotification({
         title: "Sin sesion",
@@ -45,7 +46,9 @@ export default function DisplayDataMovie({ data, src, searchBool }: any) {
 
   const pelis = data.map((movie: any) => (
     <M.Box sx={{ position: "relative" }} key={movie.id}>
-      <M.Box
+      {
+        tv?
+        <M.Box
         sx={{
           position: "absolute",
           zIndex: 19,
@@ -58,10 +61,32 @@ export default function DisplayDataMovie({ data, src, searchBool }: any) {
           top: "4px",
           left: "4px",
         }}
-        onClick={() => añadirFavorito(movie.id, movie.title)}
+        
+        onClick={() => añadirFavorito(movie.id, movie.original_name, tv)}
       >
         <FaHeart style={{ color: "red" }} />
       </M.Box>
+      :
+      <M.Box
+      sx={{
+        position: "absolute",
+        zIndex: 19,
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
+        width: "25px",
+        height: "25px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        top: "4px",
+        left: "4px",
+      }}
+      
+      onClick={() => añadirFavorito(movie.id, movie.original_title, tv)}
+    >
+      <FaHeart style={{ color: "red" }} />
+    </M.Box>
+      }
+      
       <M.Box
         className={`${ searchBool  ? "search-display" : "common-display"}`}
         onClick={() => selecccionPelicula(movie)}

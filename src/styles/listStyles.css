@@ -1,25 +1,59 @@
-.List{
-    color: #ffffff;
-    border: solid #fff 1px;
-    width: 16rem;
+.list-content-box{
+    background-color: #202938;
+    border-radius: 10px;
+    padding: 1rem .5rem;
 }
 
+.List-name{
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+
+.List{
+    color: #ffffff;
+    border: none;
+    width: 28rem;
+}
+
+
 .List-item{
+    width: 100%;
+    padding: 8px 6px 8px 12px;
     list-style: none;
     text-align: start;
-    margin-bottom: 0.5rem;
+    margin-top: 1.4rem;
     height: 24px;  
+    border: none;
+    border-radius: 14px;
+    background-color:#111828;
 }
 
 .List-item-wrapper {
     width: 100%;
 }
 
-.List-item-wrapper > span {
+.List-text {
+    width: 93%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: default;
+}
+
+.List-text:hover{
+    color: #ffffffbe;
+
+}
+
+.List-icon{
+    border-left: 1px solid;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+}
+
+.List-icon:hover{
+    color: #ffffffbe;
 }
 
 .Close {
